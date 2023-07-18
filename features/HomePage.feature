@@ -7,6 +7,7 @@ Scenario: Ir para página de Animes
 Given Eu estou na página "Inicial"
 When Eu clico em "Tendências"
 Then Eu sou redirecionado para página "Animes"
+And É exibido a lista de animes
 
 Scenario: Visualizar posts
 Given Eu estou na página "Inicial"
