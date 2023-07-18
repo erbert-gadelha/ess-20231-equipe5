@@ -18,3 +18,13 @@ And O post "Que plot horrivel que usaram em Naruto" está no meu interesse
 When Eu clico em "Review episódio 2 de Jujutsu Kaisen"
 Then Eu sou redirecionado para página "Fórum"
 And O post "Review episódio 2 de Jujutsu Kaisen" é aberto
+
+Scenario: Visualizar anime
+Given Eu estou na página "Inicial"
+And O anime "Kimetsu no Yaiba" com avaliação "8.5" e "62" assistindo está em lançamento
+And O anime "One Piece" com avaliação "8.7" e "57" assistindo está em lançamento
+And O anime "Ansatsu Kyoushitsu" com avaliação "9.5" e "78" assistindo está em lançamento
+And O anime "Shingeki no Kyojin" com avaliação "8.5" e "84" assistindo está em lançamento
+When Eu clico em "Kimetsu no Yaiba"
+Then Eu sou redirecionado para página "Animes"
+And As informações do anime "Kimetsu no Yaiba" são exibidas
