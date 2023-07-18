@@ -28,3 +28,5 @@ And O anime "Shingeki no Kyojin" com avaliação "8.5" e "84" assistindo está e
 When Eu clico em "Kimetsu no Yaiba"
 Then Eu sou redirecionado para página "Animes"
 And As informações do anime "Kimetsu no Yaiba" são exibidas
+
+----
