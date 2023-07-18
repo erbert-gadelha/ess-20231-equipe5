@@ -30,3 +30,5 @@ Then Eu sou redirecionado para página "Animes"
 And As informações do anime "Kimetsu no Yaiba" são exibidas
 
 ----
+
+2
