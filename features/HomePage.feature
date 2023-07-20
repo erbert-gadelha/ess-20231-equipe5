@@ -10,13 +10,13 @@ Then Eu sou redirecionado para página "Animes"
 
 Scenario: Visualizar posts
 Given Eu estou na página "Inicial"
-And O post do usuario "pedro12" e título "Review do episódio 2 de Jujutsu Kaisen" está no meu interesse
-And O post do usuario "almir" e título "Easter Egg no episódio 5 de Kimetsu no yaiba" está no meu interesse
-And O post do usuario "jjunior" e título "O porquê Viland Saga é o melhor anime" está no meu interesse
-And O post do usuario "erbert" e título "Que plot horrível que usaram em Naruto" está no meu interesse
+And O post do usuário "pedro12" e título "Review do episódio 2 de Jujutsu Kaisen" está no meu interesse
+And O post do usuário "almir" e título "Easter Egg no episódio 5 de Kimetsu no yaiba" está no meu interesse
+And O post do usuário "jjunior" e título "O porquê Viland Saga é o melhor anime" está no meu interesse
+And O post do usuário "erbert" e título "Que plot horrível que usaram em Naruto" está no meu interesse
 When Eu clico em "Review do episódio 2 de Jujutsu Kaisen"
 Then Eu sou redirecionado para página "Fórum"
-And O post do usuario "pedro12", "Review do episódio 2 de Jujutsu Kaisen" é aberto
+And O post do usuário "pedro12", "Review do episódio 2 de Jujutsu Kaisen" é aberto
 
 Scenario: Visualizar anime
 Given Eu estou na página "Inicial"
