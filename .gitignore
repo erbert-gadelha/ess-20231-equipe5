@@ -1,6 +1,11 @@
 *.pyc
 __pycache__/
 
+
 *.log
 *.swp
 frontend/package-lock.json
+.vercel
+node_modules
+.json
+.gitignore
