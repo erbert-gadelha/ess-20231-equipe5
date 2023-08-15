@@ -27,3 +27,8 @@ And O anime "Shingeki no Kyojin" com avaliação "8.5" e "84" assistindo está e
 When Eu clico em "Kimetsu no Yaiba"
 Then Eu sou redirecionado para página "Animes"
 And As informações do anime "Kimetsu no Yaiba" são exibidas
+And A nota exibida é "8.5"
+And O número de episódios são "26"
+And Onde assistir é "Crunchyroll"
+And O género é "Shounen"
+And A sinopse de anime é "No Japão, durante a Era Taisho, um jovem chamado Tanjiro Kamado tem a família assassinada por um demônio."
