@@ -1,46 +1,34 @@
+from fastapi import FastAPI, Query
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi import FastAPI
-from src.api.router import api_router
-from fastapi.responses import HTMLResponse
+import json;
+import uvicorn
 
-app = FastAPI()
+from src.api.search import router as search_router
+from src.api.post import router as post_router
+
+app = FastAPI();
+
+origins = [
+    "https://teste-vite-9owap1e4x-erbert-gadelha.vercel.app",
+]
 
 app.add_middleware(
     CORSMiddleware,
-    allow_credentials=True,
-    allow_origins=["*"],
     allow_methods=["*"],
     allow_headers=["*"],
+    allow_credentials=True,
+    allow_origins=origins,
 )
 
-app.include_router(api_router)
+app.include_router(search_router, prefix="/search", tags=["search"])
+app.include_router(post_router, prefix="/post", tags=["user post"])
 
-@app.get("/")
-async def root():
-    return {"GET": "Bem vindo à ela inicial!"}
+if __name__ == '__main__':
+    uvicorn.run(app, host='0.0.0.0', port=7777);
 
-@app.get("/animes")
-async def animes():
-    return {"GET": "receber animes organizados por 'default' "}
-
-
-@app.get("/animes/{order_by}")
-async def animes_param(order_by):
-    retorno = "receber animes organizados por '{0}' ".format(str(order_by))
-    return {"GET": retorno}
-
-@app.get("/home")
-async def home():
-    html_content = """
-    <html>
-        <head>
-            <title>titulo</title>
-        </head>
-        <body>
-            <h1>Tela inicial</h1>
-            <input type='text' placeholder='pesquisar anime'>
-            <button>pesquisar</button>
-        </body>
-    </html>
-    """
-    return HTMLResponse(content=html_content, status_code=200)
+@app.get('/')
+async def SearchTags():
+    return {'resposta': 'Bem Vindo!'}
+@app.get('/teste')
+async def SearchTags():
+    return {'resposta': 'Bem Vindo!'}

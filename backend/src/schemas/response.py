@@ -40,5 +40,11 @@ class HTTPResponses:
             status_code=500,
         )
 
+    @staticmethod
+    def UNSUPPORTED_MEDIA_TYPE() -> HttpResponseModel:
+        return HttpResponseModel(
+            message="Unsupported Media Type",
+            status_code=415,
+        )
 
     # TODO: implement other responses (item created, updated, deleted, etc)
