@@ -1,5 +1,5 @@
 from fastapi import APIRouter
-from src.banco_de_animes.classe_anime import lista_animes
+from banco_de_animes.classe_anime import lista_animes
 
 banco_animes = lista_animes
 

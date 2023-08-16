@@ -1,8 +1,8 @@
 from fastapi import APIRouter, Query, status, File, UploadFile
-from src.db.server import server_;
-from src.schemas.response import HttpResponseModel
-from src.service.impl.item_service import ItemService
-from src.schemas.post_schema import NewPost
+from db.server import server_;
+from schemas.response import HttpResponseModel
+from service.impl.item_service import ItemService
+from schemas.post_schema import NewPost
 
 router = APIRouter()
 

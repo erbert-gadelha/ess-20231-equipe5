@@ -1,6 +1,6 @@
-from src.schemas.response import HTTPResponses, HttpResponseModel, Optional
-from src.service.meta.item_service_meta import ItemServiceMeta
-from src.db.server import server_ as db
+from schemas.response import HTTPResponses, HttpResponseModel, Optional
+from service.meta.item_service_meta import ItemServiceMeta
+from db.server import server_ as db
 
 class ItemService(ItemServiceMeta):
 

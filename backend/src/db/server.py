@@ -1,6 +1,6 @@
 import sqlite3;
-from src.db.CreatePost import CreatePost;
-from src.db.SearchPost import SearchPost;
+from db.CreatePost import CreatePost;
+from db.SearchPost import SearchPost;
 from uuid import uuid4
 
 class server_bd():
