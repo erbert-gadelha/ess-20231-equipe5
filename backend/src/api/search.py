@@ -3,7 +3,7 @@ from src.db.server import server_;
 import json;
 
 router = APIRouter()
-
+#D:\Users\pbsl\Documents\GitHub\ess-20231-equipe5\backend
 @router.get('/')
 async def search(tags: str = Query(None)):
     if tags is not None:
@@ -24,9 +24,9 @@ async def SetPost(data: dict):
 
 @router.get('/settle')
 async def get_data():
-    retorno = 'povoou o banco' if(server_.settle()) else 'banco ja povoado';
+    retorno = 'povoou o banco' if(server_.settle()) else 'banco ja povoado'
     print(retorno)
-    return retorno;
+    return retorno
 
 @router.get('/all')
 async def get_data():

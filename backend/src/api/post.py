@@ -9,7 +9,7 @@ router = APIRouter()
 @router.get('/')
 async def search(id: str = Query(None), ids: str = Query(None)):
 
-    retorno = {};
+    retorno = {}
 
     if id is not None:
         post = server_.searchForPosts([id])[0]

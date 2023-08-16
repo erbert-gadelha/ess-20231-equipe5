@@ -2,7 +2,7 @@ import sqlite3
 
 class SearchPost:
     def __init__(self, cursor):
-        temp = 0;
+        temp = 0
     
     def getTags(self, tags, cursor):
         

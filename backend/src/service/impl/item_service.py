@@ -30,7 +30,7 @@ class ItemService(ItemServiceMeta):
                     message=HTTPResponses.UNSUPPORTED_MEDIA_TYPE().message,
                     status_code=HTTPResponses.UNSUPPORTED_MEDIA_TYPE().status_code,
                 )
-        post_response = db.create_post(post_main, post_img)
+        post_response = db.createPost(post_main, post_img)
         if not post_response:
             return HttpResponseModel(
                 message=HTTPResponses.SERVER_ERROR().message,
@@ -46,7 +46,7 @@ class ItemService(ItemServiceMeta):
     @staticmethod
     def create_comment(comment: dict, post_id: str) -> HttpResponseModel:
         """Post a new comment method implementation"""
-        response = db.create_comment(comment, post_id)
+        response = db.createComment(comment, post_id)
         if not response:
             return HttpResponseModel(
                 message=HTTPResponses.SERVER_ERROR().message,
@@ -57,4 +57,21 @@ class ItemService(ItemServiceMeta):
                 message=HTTPResponses.ITEM_CREATED().message,
                 status_code=HTTPResponses.ITEM_CREATED().status_code,
             )
+
+    @staticmethod
+    def get_comments(post_id: str) -> HttpResponseModel:
+        """Get all comments of a post via the post id"""
+        post_commts = db.getComments(post_id)
+        if not post_commts:
+            return HttpResponseModel(
+                message=HTTPResponses.ITEM_NOT_FOUND().message,
+                status_code=HTTPResponses.ITEM_NOT_FOUND().status_code,
+            )
+        else:
+            return HttpResponseModel(
+                message=HTTPResponses.ITEM_FOUND().message,
+                status_code=HTTPResponses.ITEM_FOUND().status_code,
+                data=post_commts,
+            )
+
     # TODO: implement other methods (create, update, delete)
