@@ -2,6 +2,7 @@ import sqlite3;
 from src.db.CreatePost import CreatePost;
 from src.db.SearchPost import SearchPost;
 from uuid import uuid4
+import os
 
 class server_bd():
     
@@ -109,20 +110,28 @@ class server_bd():
         self._cur.execute(f'SELECT id FROM Post')
         id_list = self._cur.fetchall()
         while(p_check and count<3):
-            post_id = uuid4()
+            post_id = str(uuid4())
             p_check = post_id in id_list
             count += 1
 
         if(not p_check):
-            self._cur.execute(f'INSERT INTO Post * VALUES ({post_id}, "{post["user"]}", "{post["title"]}", "{post["body"]}", {post["image"]})')
-            for tag in post['tags']:
-                self._cur.execute(f'INSERT INTO Post_tag (post, tag) VALUES ({post_id}, "{tag.capitalize()}")')
+            self._cur.execute(
+                'INSERT INTO Post (id, user, title, body, image) VALUES (?, ?, ?, ?, ?)',
+                (post_id, post["user"], post["title"], post["body"], post["img_filename"])
+            )
+            tags = [(post_id, tag.capitalize()) for tag in post['tags']]
+            self._cur.executemany(
+                'INSERT INTO Post_tag (post, tag) VALUES (?, ?)',
+                tags
+            )
             
-            if(type(post_img) == bytes):
-                    img_file = open(f'src/db/images/{post["image"]}', 'wb')
-                    img_file.write(post_img)
-                    img_file.close()
-            
+            if post_img is not None:
+                img_repo = os.getcwd()+'/backend/src/db/images'
+                if not os.path.exists(img_repo):
+                    os.makedirs(img_repo)
+                with open(f'{img_repo}/{post["img_filename"]}', 'wb') as f:
+                    f.write(post_img)
+
             return {post_id: post}
     
     def searchForTags(self, tags):

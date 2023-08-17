@@ -20,17 +20,17 @@ class ItemService(ItemServiceMeta):
             )
     
     @staticmethod
-    def create_post(post_main: dict, post_img: Optional[bytes] = None) -> HttpResponseModel:
+    def create_post(post: dict) -> HttpResponseModel:
         """Post a new post method implementation"""
-        if(post_img):
-            f_name: str = post_main['image']
+        if(post['img_bytes']):
+            f_name: str = post['img_filename']
             f_type = f_name[f_name.rfind('.'):]
             if(f_type not in ['.jpg', '.jpeg', '.png']):
                 return HttpResponseModel(
                     message=HTTPResponses.UNSUPPORTED_MEDIA_TYPE().message,
                     status_code=HTTPResponses.UNSUPPORTED_MEDIA_TYPE().status_code,
                 )
-        post_response = db.createPost(post_main, post_img)
+        post_response = db.createPost(post, post['img_bytes'])
         if not post_response:
             return HttpResponseModel(
                 message=HTTPResponses.SERVER_ERROR().message,
