@@ -172,7 +172,8 @@ class server_bd():
                 'INSERT INTO Post (id, user, title, body, image) VALUES (?, ?, ?, ?, ?)',
                 (post_id, post["user"], post["title"], post["body"], post["img_filename"])
             )
-            tags = [(post_id, tag.capitalize()) for tag in post['tags']]
+            '''tags = [(post_id, tag.capitalize()) for tag in post['tags']]'''
+            tags = [(post_id, tag) for tag in post['tags']]
             self._cur.executemany(
                 'INSERT INTO Post_tag (post, tag) VALUES (?, ?)',
                 tags

@@ -6,7 +6,9 @@
     opacity: 0.9;
     border: gray 1px solid;
     flex-direction: column;
-    width: 100%;
+    width: 88%;
+    margin-top: 16px;
+    margin-right: 12%;
     height: fit-content;
     position: absolute;
     top: 48px;

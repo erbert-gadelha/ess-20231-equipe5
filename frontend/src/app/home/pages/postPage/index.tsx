@@ -16,17 +16,17 @@ function PostPage() {
     const [title, setTitle] = useState("");
     const [body, setBody] = useState("");
     const [img_name, setImgName] = useState(undefined);
-    const [img_content, setImgContent] = useState(undefined);
-    const [comments, setComments] = useState([]);
+    const [img_content, setImgContent] = useState(null);
+    const [comments, setComments] = useState([{id: 0, user: "", body: ""}]);
     const { postId } = useParams();
-    console.log('postId: ' + postId) 
+    //console.log('postId: ' + postId) 
 
     function clck_new_comment(){
         navigate('/comments/' + postId + '/new_comment', {state: {
             og_user: user,
             og_body: body
         }});
-    };
+    }
 
     useEffect(() => {
         const getPostInfo = async () => {
@@ -37,8 +37,14 @@ function PostPage() {
                 setTitle(response.data.data.title);
                 setBody(response.data.data.body);
                 setImgName(response.data.data.image_name);
-                //setImgContent(response.data.image_content);
+        
+                
                 setComments(response.data.data.comments);
+
+                setTimeout(() => {
+                    setImgContent(response.data.data.image_content);
+                }, 100);
+
             } catch (error) {
                 console.log('Erro: ' + error);
             }
@@ -46,7 +52,7 @@ function PostPage() {
 
         getPostInfo();
 
-    }, []); // se o [] tiver vazio ele sÃ³ vai executar uma vez quando abrir
+    }, [postId]);
 
     return (
         <section className={styles.container}>
@@ -67,20 +73,16 @@ function PostPage() {
                     <p> {body} </p>
                     </div>
                     {img_name != null && (
-                        <div className="body_image">
-                            <p>[{img_name}]</p>
-                            <img src={img_content} />
-                        </div>
+                            <img className={styles.imagemAnexa} src={`data:image/png;base64,${img_content}`} />
                     )}
-                    <div>
-                        <button className="CommentButton" onClick={clck_new_comment}>
-                            COMENTAR
-                        </button>
-                    </div>
+
                 </div>
-                <div style={{width:"100%"}}>
-                {comments.map((comment: Object) => (
-                    <div className={styles.comments} key={comment.id}>
+                <button className={styles.commentButton} onClick={clck_new_comment}>
+                        COMENTAR
+                </button>
+                <div id="comments" className={styles.comments} style={{width:"100%"}}>
+                {comments.map((comment) => (
+                    <div className={styles.commentary} key={comment.id}>
                         <Comment
                             user={comment.user}
                             text={comment.body}

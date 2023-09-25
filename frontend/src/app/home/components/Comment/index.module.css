@@ -1,0 +1,15 @@
+.container{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 4px;
+    gap: 4px;
+}
+
+.user{
+    font-weight: bold;
+}
+
+.text {
+    font-weight: lighter;
+}

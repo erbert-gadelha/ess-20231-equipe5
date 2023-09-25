@@ -1,60 +1,72 @@
 import styles from "./index.module.css";
 import axios from "axios";
-import { useEffect, useRef, useState } from "react";
-
-
+import { useEffect, useState } from "react";
 
 
 const EmAlta = () => {
     const [animeList, setAnimelist] = useState([]);
+    const [headerText, setHeaderText] = useState('Em Alta');
 
-    const getAnimes = async() => {
+    const getAnimes = async(param='') => {
+        if(param != '') {
+            const response = await axios.get(`http://127.0.0.1:8000/emalta/${param}`);
+            setAnimelist(response.data);
+            setHeaderText(`Em Alta no ${param}`);
+        }
+        else {
+            const url = window.location.href;
+            let query = url.split('/').pop();
+            
+            if(!(query == "dia" || query == "semana" || query == "trimestre" || query == "ano"))
+                query = "dia";
 
-        const response = await axios.get('http://127.0.0.1:8000/emalta/dia');
-        setAnimelist(response.data);
+            window.history.pushState({},`/emalta/${query}`);
+    
+            const response = await axios.get(`http://127.0.0.1:8000/emalta/${query}`);
+            setAnimelist(response.data);
+            setHeaderText(`Em Alta no ${query}`);
+        }
+        
     }
 
     useEffect(() => {
-        
         getAnimes();
-
     }, []);
+
+    
 
         
     return (
-        <section>
-            <div>
-                <h2>Em Alta</h2>
-                <div className="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">    
-                    
-                    <div className="btn-group me-2">
-                        <a href="#" className="btn btn-secondary active" aria-current="page">Dia</a>
-                        <a href="/emalta/semana" className="btn btn-secondary">Semana</a>
-                        <a href="/emalta/trimestre" className="btn btn-secondary">Trimestre</a>
-                        <a href="/emalta/ano" className="btn btn-secondary">Ano</a>
-                    </div>
-                    <div className="btn-group me-2">
-                    <a href="/analise-de-tendencias" className="btn btn-secondary me-md-2">↵ Voltar</a>
-                    </div>
-                </div>    
-                <table className="table">
-                    <caption>Em Alta no dia</caption>
-                <thead className="table-light">    
-                    <tr>
-                        <th>Animes</th>
-                        <th>Qtd. Assistidos</th>
-                    </tr>
-                </thead>    
-                    <tbody className="table-group-divider">
-                        {animeList.map((anime) => (
-                            <tr key={(anime as any).id}>
-                                <th>{(anime as any).nome_anime}</th>
-                                <th>{(anime as any).assistidos_periodo}</th>
-                            </tr>
-                        ))}
-                    </tbody>
-                </table>
-            </div>
+        <section className={styles.container}>
+            <div className={styles.toolbar} role="toolbar" aria-label="Toolbar with button groups"> 
+                <h2  id="header-emalta" className={styles.headeremalta}>{headerText}</h2>   
+                
+                <div className={styles.botoes}>
+                    <button className={styles.botao} onClick={() => {getAnimes('dia')}}>dia</button>
+                    <button className={styles.botao}  onClick={() => {getAnimes('semana')}}>semana</button>
+                    <button className={styles.botao} onClick={() => {getAnimes('trimestre')}}>trimestre</button>
+                    <button className={styles.botao} onClick={() => {getAnimes('ano')}}>ano</button>
+                </div>
+            </div>    
+            <table className="table">
+                <caption>{headerText}</caption>
+            <thead className={styles.tableLight}>    
+                <tr className={styles.tableLight}>
+                    <th className={styles.tableLight}>Animes</th>
+                    <th>Qtd. Assistidos</th>
+                </tr>
+            </thead>    
+                <tbody className="table-group-divider">
+                    {animeList.map((anime, index) => (
+                        //<tr key={(anime as any).id}>
+                        //<tr key={index}>
+                        <tr key={(anime as any).nome_anime}>
+                            <th>{(anime as any).nome_anime}</th>
+                            <th>{(anime as any).assistidos_periodo}</th>
+                        </tr>
+                    ))}
+                </tbody>
+            </table>
         </section>
     )
 };

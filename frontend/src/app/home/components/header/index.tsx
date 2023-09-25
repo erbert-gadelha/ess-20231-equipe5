@@ -112,12 +112,12 @@ function formatQuery (texto) {
     // Remove acentos e converte para letras minúsculas
     const textoSemAcentos = texto
         .normalize("NFD")
-        .replace(/[\u0300-\u036f]/g, "")
-        .toLowerCase();
+        .replace(/[\u0300-\u036f]/g, "")/*
+        .toLowerCase()*/;
     
     // Remove espaços e caracteres especiais, deixando apenas letras, números e vírgulas
     const textoFormatado = textoSemAcentos
-        .replace(/[^a-zA-Z0-9,]+/g, "");
+        .replace(/[^a-zA-Z0-9, ]+/g, "");
     
     return textoFormatado;
 }
@@ -251,8 +251,9 @@ const Header = ({children}) => {
                             <img src={search_icon} alt="SVG" width="16px" height="16px" style={{ marginTop: "-2px" }}/>
                         </button>
                         <button className={styles.clear_bar} onClick={()=>clearBar()}> ✖ </button>
-                        {(recentSearch.length > 0) && <RecentSearch recents={recentSearch}/>}
                     </div>
+
+                    {(recentSearch.length > 0) && <RecentSearch recents={recentSearch}/>}
 
                     <Link className={styles.post_button} to="/post/new_post" replace> {post_svg()} </Link>
                 </div>

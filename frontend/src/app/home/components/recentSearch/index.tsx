@@ -1,7 +1,7 @@
 import styles from "./index.module.css";
 import Item from "./item";
 
-const RecentSearch = ({recents=[]}) => {
+const RecentSearch = ({recents}) => {
 
   const clear = () => {
     localStorage.setItem("recentSearches", JSON.stringify([]));

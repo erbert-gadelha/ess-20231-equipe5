@@ -1,6 +1,7 @@
 .container {
     width: 100%;
-    height: 100%;
+    /*margin: 32px 0;*/
+    min-height: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -8,6 +9,9 @@
 }
 
 .centralize{
+    margin-top: 32px;
+    margin-bottom: 64px;
+
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -43,11 +47,33 @@ button {
     align-items: flex-start; 
 }
 
-.comments {
-    margin-top: 8px;
+.commentary {
     display: flex;
     height: fit-content;
     width: 100%;
     gap: 8px;
     align-items: start;
+
+    /*outline: 1px solid gray;*/
+    border-bottom: solid 1px rgba(128, 128, 128, 0.521);
+}
+
+.commentary:last-child{
+    border-bottom: none;
+}
+
+.comments {
+    margin: 4px;
+    padding: 4px;
+}
+
+.commentButton {
+    margin: 8px 8px -16px auto;
+}
+
+.imagemAnexa {
+    max-height: 80vh;
+    max-width: 100%;
+    border: 2px solid black;
+    margin-left: auto;
 }
