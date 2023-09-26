@@ -26,7 +26,7 @@ function CreatePost() {
             ...post,
             [name]: value,
         });
-        console.log(name + ': ' + value);
+        //console.log(name + ': ' + value);
     };
 
     const convertBase64 = (file) => {
@@ -123,6 +123,7 @@ function CreatePost() {
                         <label>
                             Título:
                             <input
+                                data-cy="input-title"
                                 type="text"
                                 name="title"
                                 value={post.title}
@@ -134,11 +135,12 @@ function CreatePost() {
                         <label>
                             Tags:
                             <input
+                                data-cy="input-tags"
                                 type="text"
                                 value={tagInput}
                                 onChange={handleTagInputChange}
                             />
-                            <button type="button" onClick={addTag}>
+                            <button data-cy="button-add-tag" type="button" onClick={addTag}>
                                 Adicionar
                             </button>
                         </label>
@@ -164,6 +166,7 @@ function CreatePost() {
                         <label>
                             Corpo:
                             <textarea
+                                data-cy="input-body"
                                 name="body"
                                 value={post.body}
                                 onChange={handleChange}
@@ -183,7 +186,7 @@ function CreatePost() {
                             <button type="button" onClick={removeFile} >Remover</button>
                         }
                     </div>
-                    <button type="submit">Postar</button>
+                    <button data-cy="button-create-post" type="submit">Postar</button>
                 </form>
             </div>
         </section>

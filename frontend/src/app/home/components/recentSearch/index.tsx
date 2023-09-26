@@ -8,12 +8,12 @@ const RecentSearch = ({recents}) => {
   }
     
   return (
-    <section className={styles.container}>
+    <section data-cy="recent-searched" className={styles.container}>
         {recents.map((tag, index) => {
           return <Item key={index} tag={tag}/>
         })}
 
-        <button className={styles.clearButton} onClick={clear}>
+        <button data-cy="clear-hints" className={styles.clearButton} onClick={clear}>
           limpar
         </button>
     </section>

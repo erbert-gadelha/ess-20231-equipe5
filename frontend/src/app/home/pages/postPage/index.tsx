@@ -58,17 +58,17 @@ function PostPage() {
         <section className={styles.container}>
             <div className={styles.centralize}>
                 <div className={styles.header}>
-                    <div className="user">
+                    <div data-cy="post-user" className="user">
                         <p> user#<b>{user}</b> </p>
                     </div>
-                    <div className="title">
+                    <div data-cy="post-title" className="title">
                         <p> {title} </p>
                     </div>
-                    <div className="tags">
+                    <div data-cy="post-tags"className="tags">
                     <p> {tags} </p>
                     </div>
                 </div>
-                <div className="PostBody">
+                <div data-cy="post-body"className="PostBody">
                     <div className="body">
                     <p> {body} </p>
                     </div>
@@ -77,10 +77,10 @@ function PostPage() {
                     )}
 
                 </div>
-                <button className={styles.commentButton} onClick={clck_new_comment}>
+                <button data-cy="create-comment" className={styles.commentButton} onClick={clck_new_comment}>
                         COMENTAR
                 </button>
-                <div id="comments" className={styles.comments} style={{width:"100%"}}>
+                <div data-cy="post-comments" id="comments" className={styles.comments} style={{width:"100%"}}>
                 {comments.map((comment) => (
                     <div className={styles.commentary} key={comment.id}>
                         <Comment

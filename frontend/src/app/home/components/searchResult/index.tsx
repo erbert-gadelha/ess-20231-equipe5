@@ -21,7 +21,7 @@ const SearchResult = ({post_id}) => {
   }, [post_id]);
 
   return (
-    <Link to={`/post/${post_id}`} replace className={styles.container}>
+    <Link data-cy="post" to={`/post/${post_id}`} replace className={styles.container}>
       { !(post.title) ? (
           <span>Carregando...</span>
         ):(

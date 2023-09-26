@@ -5,5 +5,9 @@
     "sourceMap": false,
     "types": ["node", "cypress"]
   },
-  "include": ["./**/*.ts"]
+  "include": ["./**/*.ts"],
+  "cypress-cucumber-preprocessor": {
+    "commonPath": "./e2e/features/common-step-definitions/",
+    "stepDefinitions": "./e2e/features/"
+  }
 }

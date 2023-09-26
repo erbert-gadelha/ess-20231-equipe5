@@ -246,8 +246,8 @@ const Header = ({children}) => {
                 <div className={styles.search_post}>
                     
                     <div className={styles.searchbar_container} id="searchbar">
-                        <input type="text" className={styles.text_input} placeholder="pesquisar" onKeyDown={(e) => search(e)} defaultValue={tags} onFocus={onfocus} onChange={onchange} onBlur={onblur}/>
-                        <button className={styles.search_button} onClick={()=>search(null)}>
+                        <input data-cy="searchbar-input" type="text" className={styles.text_input} placeholder="pesquisar" onKeyDown={(e) => search(e)} defaultValue={tags} onFocus={onfocus} onChange={onchange} onBlur={onblur}/>
+                        <button data-cy="searchbar-button" className={styles.search_button} onClick={()=>search(null)}>
                             <img src={search_icon} alt="SVG" width="16px" height="16px" style={{ marginTop: "-2px" }}/>
                         </button>
                         <button className={styles.clear_bar} onClick={()=>clearBar()}> ✖ </button>
@@ -255,7 +255,7 @@ const Header = ({children}) => {
 
                     {(recentSearch.length > 0) && <RecentSearch recents={recentSearch}/>}
 
-                    <Link className={styles.post_button} to="/post/new_post" replace> {post_svg()} </Link>
+                    <Link data-cy="new-post-button" className={styles.post_button} to="/post/new_post" replace> {post_svg()} </Link>
                 </div>
                 
             </div>

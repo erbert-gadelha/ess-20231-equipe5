@@ -1,6 +1,7 @@
 {
   "dependencies": {
     "axios": "^1.5.0",
+    "cucumber-pretty": "^6.0.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.46.1",
@@ -8,6 +9,10 @@
     "zod": "^3.22.2"
   },
   "devDependencies": {
+    "cucumber-html-reporter": "^7.1.1",
+    "cypress": "^13.2.0",
+    "cypress-cucumber-preprocessor": "^4.3.1",
+    "cypress-xpath": "^2.0.1",
     "typescript": "^5.2.2"
   }
 }
