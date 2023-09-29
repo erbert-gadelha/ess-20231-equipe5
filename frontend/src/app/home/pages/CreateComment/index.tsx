@@ -62,12 +62,13 @@ function CreateComment() {
                     <p>Comentário:</p>
                     <label>
                         <input
+                            data-cy="input-comment-body"
                             type="text"
                             value={comment.body}
                             onChange={handleChange}
                         />
                     </label>
-                    <button type="submit">Enviar</button>
+                    <button data-cy="button-create-comment" type="submit">Enviar</button>
                 </form>
             </div>
         </div>

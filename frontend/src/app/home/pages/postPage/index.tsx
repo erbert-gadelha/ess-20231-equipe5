@@ -82,7 +82,7 @@ function PostPage() {
                 </button>
                 <div data-cy="post-comments" id="comments" className={styles.comments} style={{width:"100%"}}>
                 {comments.map((comment) => (
-                    <div className={styles.commentary} key={comment.id}>
+                    <div data-cy="item-comment" className={styles.commentary} key={comment.id}>
                         <Comment
                             user={comment.user}
                             text={comment.body}

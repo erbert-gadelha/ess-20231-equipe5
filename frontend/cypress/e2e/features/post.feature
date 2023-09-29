@@ -48,4 +48,14 @@ Feature: Publicacao de Posts
       And o usuário deve ver o componente "post-tags" contendo o valor "pokemon"
       Then a imagem "pokeball.png" é exibida no componente "post-image"
 
+
+    Scenario: Realizando post
+      Given o usuário acessa o post "4cdb9579-597e-43ca-8840-ce2c3ac4463d"
+      When o usuário pressionar o botão "create-comment"
+      And o usuário preenche o campo "input-comment-body" com "Comentário legal"
+      And o usuário pressionar o botão "button-create-comment"
+      Then o usuário deve ver o componente "item-comment" contendo o valor "Comentário legal"
+      
+
+
       
