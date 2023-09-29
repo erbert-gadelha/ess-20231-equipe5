@@ -59,7 +59,7 @@ function PostPage() {
             <div className={styles.centralize}>
                 <div className={styles.header}>
                     <div data-cy="post-user" className="user">
-                        <p> user#<b>{user}</b> </p>
+                        <p data-cy="post-author"> user#<b>{user}</b> </p>
                     </div>
                     <div data-cy="post-title" className="title">
                         <p> {title} </p>
@@ -73,7 +73,7 @@ function PostPage() {
                     <p> {body} </p>
                     </div>
                     {img_name != null && (
-                            <img className={styles.imagemAnexa} src={`data:image/png;base64,${img_content}`} />
+                            <img data-cy="post-image" className={styles.imagemAnexa} src={`data:image/png;base64,${img_content}`} />
                     )}
 
                 </div>

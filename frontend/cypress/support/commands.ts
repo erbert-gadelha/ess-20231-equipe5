@@ -36,6 +36,11 @@
 //   }
 // }
 
+/// <reference types="cypress-image-compare" />
+import "cypress-image-compare/command";
+import 'cypress-image-compare/register';
+
+
 declare global {
   // eslint-disable-next-line @typescript-eslint/no-namespace
   namespace Cypress {

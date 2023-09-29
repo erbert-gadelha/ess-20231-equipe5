@@ -5,7 +5,7 @@ const FeedCard = ({src="", title="", descr=""}) => {
     <div className={styles.container} style={{backgroundImage:`url(${src})`}}>
       <div className={styles.overlay}>
         <h1 className={styles.title}>{title}</h1>
-        <p className={styles.description}>{descr}</p>
+        <p data-cy="card-value" className={styles.description}>{descr}</p>
       </div>
     </div>
   );

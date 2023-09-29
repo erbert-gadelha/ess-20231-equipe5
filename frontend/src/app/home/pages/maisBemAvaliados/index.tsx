@@ -26,6 +26,7 @@ function maisBemAvaliados() {
 
       <label htmlFor="orderSelect">Ordenar</label>
       <select
+        data-cy="selector-order"
         id="orderSelect"
         value={orderOption}
         onChange={handleOrderChange}
@@ -34,13 +35,13 @@ function maisBemAvaliados() {
         <option value="crescente">Do menor para o maior</option>
       </select>
 
-      <ul className="anime-list">
+      <ul data-cy="list-most-rated" className="anime-list">
         {animeList.map(anime => (
           <li key={anime.name} className="anime-item">
           <img src={anime.img_url} alt={anime.name} className="anime-image" />
             <div className="anime-details">
             <span className="anime-name">{anime.name}</span>
-            <span className="anime-rating">Nota: {anime.rating}</span>
+            <span data-cy="item-value" className="anime-rating">Nota: {anime.rating}</span>
             </div>
           </li>
         ))}

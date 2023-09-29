@@ -36,6 +36,7 @@ function MaisVistos() {
       <h1 className="header">Mais Vistos</h1>
       <label htmlFor="orderSelect">Ordenar</label>
       <select
+        data-cy="select-order"
         id="orderSelect"
         value={orderOption}
         onChange={handleOrderChange}
@@ -45,6 +46,7 @@ function MaisVistos() {
       </select>
       <label htmlFor="timePeriodSelect">Período</label>
       <select
+        data-cy="select-period"
         id="timePeriodSelect"
         value={timePeriodOption}
         onChange={handleTimePeriodChange}
@@ -57,13 +59,13 @@ function MaisVistos() {
         <option value="">Sempre</option>
       </select>
 
-      <ul className="anime-list">
+      <ul data-cy="list-most-viewed" className="anime-list">
         {animeList.map(anime => (
-          <li key={anime.name} className="anime-item">
+          <li data-cy="anime-item" key={anime.name} className="anime-item">
             <img src={anime.img_url} alt={anime.name} className="anime-image" />
             <div className="anime-details">
               <span className="anime-name">{anime.name}</span>
-              <span className="anime-views">{anime.views} views</span>
+              <span data-cy="item-value" className="anime-views">{anime.views} views</span>
             </div>
           </li>
         ))}

@@ -17,5 +17,3 @@
 import "./commands";
 import "@cypress/code-coverage/support";
 
-// Alternatively you can use CommonJS syntax:
-require('cypress/e2e/features/search/search.ts')

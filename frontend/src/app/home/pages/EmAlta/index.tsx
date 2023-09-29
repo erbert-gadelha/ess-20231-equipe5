@@ -39,13 +39,13 @@ const EmAlta = () => {
     return (
         <section className={styles.container}>
             <div className={styles.toolbar} role="toolbar" aria-label="Toolbar with button groups"> 
-                <h2  id="header-emalta" className={styles.headeremalta}>{headerText}</h2>   
+                <h2 data-cy="header-trending" id="header-emalta" className={styles.headeremalta}>{headerText}</h2>   
                 
                 <div className={styles.botoes}>
-                    <button className={styles.botao} onClick={() => {getAnimes('dia')}}>dia</button>
-                    <button className={styles.botao}  onClick={() => {getAnimes('semana')}}>semana</button>
-                    <button className={styles.botao} onClick={() => {getAnimes('trimestre')}}>trimestre</button>
-                    <button className={styles.botao} onClick={() => {getAnimes('ano')}}>ano</button>
+                    <button data-cy="button-trending-day" className={styles.botao} onClick={() => {getAnimes('dia')}}>dia</button>
+                    <button data-cy="button-trending-week" className={styles.botao} onClick={() => {getAnimes('semana')}}>semana</button>
+                    <button data-cy="button-trending-trimeter" className={styles.botao} onClick={() => {getAnimes('trimestre')}}>trimestre</button>
+                    <button data-cy="button-trending-year" className={styles.botao} onClick={() => {getAnimes('ano')}}>ano</button>
                 </div>
             </div>    
             <table className="table">
@@ -60,9 +60,9 @@ const EmAlta = () => {
                     {animeList.map((anime, index) => (
                         //<tr key={(anime as any).id}>
                         //<tr key={index}>
-                        <tr key={(anime as any).nome_anime}>
+                        <tr data-cy="anime-card" key={(anime as any).nome_anime}>
                             <th>{(anime as any).nome_anime}</th>
-                            <th>{(anime as any).assistidos_periodo}</th>
+                            <th data-cy="item-value">{(anime as any).assistidos_periodo}</th>
                         </tr>
                     ))}
                 </tbody>

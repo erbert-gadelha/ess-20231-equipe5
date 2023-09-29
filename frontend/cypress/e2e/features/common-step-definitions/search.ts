@@ -34,7 +34,9 @@ Given("o usuario buscou recentemente por {string}", (tags: string) => {
       recentSearches.push(tag.trim());
     });
 
-    win.localStorage.setItem('recentSearches', JSON.stringify([recentSearches]));
+
+    console.log(recentSearches);
+    win.localStorage.setItem('recentSearches', JSON.stringify(recentSearches));
   });
 });
 

@@ -177,6 +177,7 @@ function CreatePost() {
                         <label>
                         Imagem:
                         <input
+                            data-cy="input-image"
                             type="file"
                             accept=".jpef, .png, .jpg"
                             onChange={uploadImage}

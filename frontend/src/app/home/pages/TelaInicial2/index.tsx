@@ -76,11 +76,11 @@ const TelaInicial = () => {
   return (
     <section className={styles.container}>
         <div className={styles.esq}>
-            <Link to="emalta" className={styles.bar_header}>
+            <Link data-cy="link-trending" to="emalta" className={styles.bar_header}>
               <h2>Em Alta</h2>
             </Link>
             <div className={styles.barra}>
-              <div className={styles.barra_aux}>
+              <div data-cy="list-trending" className={styles.barra_aux}>
                     {mostViewed?
                     trending.map((anime, index) => {
                       return <FeedCard src={anime.img_url} title={anime.name} descr={`views: ${anime.views}`} key={index}/>
@@ -90,11 +90,11 @@ const TelaInicial = () => {
                 </div>
             </div>
 
-            <Link to="mais-bem-avaliados" className={styles.bar_header}>
+            <Link data-cy="link-most-rated" to="mais-bem-avaliados" className={styles.bar_header}>
               <h2>Mais bem avaliados</h2>
             </Link>
             <div className={styles.barra}>
-              <div className={styles.barra_aux}>
+              <div data-cy="list-most-rated" className={styles.barra_aux}>
                     {mostViewed?
                     mostRated.map((anime, index) => {
                       return <FeedCard src={anime.img_url} title={anime.name} descr={`media: ${anime.rating}`} key={index}/>
@@ -104,11 +104,11 @@ const TelaInicial = () => {
                 </div>
             </div>
 
-            <Link to="mais-vistos" className={styles.bar_header}>
+            <Link data-cy="link-most-viewed" to="mais-vistos" className={styles.bar_header}>
               <h2>Mais Lidos/Vistos</h2>
             </Link>
             <div className={styles.barra}>
-                <div className={styles.barra_aux}>
+                <div data-cy="list-most-viewed"className={styles.barra_aux}>
                     {mostViewed?
                     mostViewed.map((anime, index) => {
                       return <FeedCard src={anime.img_url} title={anime.name} descr={`views: ${anime.views}`} key={index}/>
